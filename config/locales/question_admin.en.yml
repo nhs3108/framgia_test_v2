@@ -11,7 +11,7 @@ en:
       edit_question:
         menu: "Edit"
         title: "Edit question for %{object_label}"
-        breadcrumb: "%{object_label}"
+        breadcrumb: "Edit"
       create_question:
         menu: "Add new"
         title: "Add new question"

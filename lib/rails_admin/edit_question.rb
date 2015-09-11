@@ -19,7 +19,7 @@ module RailsAdmin
         end
 
         register_instance_option :breadcrumb_parent do
-          [:index, bindings[:abstract_model]]
+          [:show_question, bindings[:abstract_model], bindings[:object]]
         end
 
         register_instance_option :http_methods do

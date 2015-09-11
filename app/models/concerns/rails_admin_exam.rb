@@ -4,7 +4,21 @@ module RailsAdminExam
   included do
     rails_admin do
       show do
-        field :status
+        field :status do
+          pretty_value do
+            status = bindings[:object]
+            class_label = if status.start?
+              "label label-primary"
+            elsif status.testing?
+              "label label-warning"
+            elsif status.unchecked?
+              "label label-info"
+            else
+              "label label-success"
+            end
+            %{<div class="#{class_label}">#{status.status}</div >}.html_safe
+          end
+        end
         field :time do
           label "Spent time"
           formatted_value{bindings[:object].spent_time_format}
