@@ -1,9 +1,19 @@
 <div class="row">
   <div class="col-md-8">
+    <table class="table table-bordered">
+      <tr>
+        <th class="text-center"><%= t "name" %></th>
+        <th class="text-center"><%= t "email" %></th>
+        <th class="text-center"><%= t "chatwork_id" %></th>
+      </tr>
+      <tr>
+        <td class="text-center"><%= link_to object.user.name, "#" %></td>
+        <td class="text-center"><%= object.user.email %></td>
+        <td class="text-center"><%= object.user.chatwork_id %></td>
+      </tr>
+    </table>
     <p class="score-label">
-    <% if object.checked? %>
-      <%= t("admin.labels.total_score", score: object.score_exam) %></p>
-    <% end %>
+    <%= t("admin.labels.total_score", score: object.score_exam) %></p>
     <%= render "mark_exam_form", object: object %>
   </div>
 </div>
