@@ -51,6 +51,11 @@ class Exam < ActiveRecord::Base
     results.where(correct: true).count
   end
 
+  def set_mark
+    self.results.each{|result| result.check_result}
+    self.update score: self.calculate_score
+  end
+
   def duration
     unchecked? ||checked? ? 0 : subject.duration * 60 - (Time.zone.now -
       results.first.created_at).to_i

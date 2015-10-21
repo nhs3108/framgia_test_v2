@@ -57,3 +57,6 @@ en:
       chatwork_api_key_confirm: "Please fill in your Chatwork API Key."
   dialogs:
     delete_dialog: "Are you sure?"
+  chatwork_id: "ChatworkID"
+  name: "Name"
+  email: "Email"

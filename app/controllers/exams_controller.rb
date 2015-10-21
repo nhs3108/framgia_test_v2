@@ -35,6 +35,7 @@ class ExamsController < ApplicationController
     end
 
     if @exam.update_attributes exam_params
+      @exam.set_mark
       flash[:notice] = t "flashs.messages.submit_success"
     else
       flash[:alert] = t "flashs.messages.invalid"

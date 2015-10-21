@@ -23,4 +23,8 @@ class Result < ActiveRecord::Base
   def result_correct_count?
     Answer.option_correct(id) == Option.count_correct_option(question_id)
   end
+
+  def check_result
+    self.update correct: true if Answer.not_correct(self.id) <= 0 && Answer.option_correct(self.id) > 0
+  end
 end
