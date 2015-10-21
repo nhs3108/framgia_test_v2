@@ -8,6 +8,7 @@
             <%= ck.label(class: "check_box #{"label-success" unless Option.correct_option(ck.value).blank?}"){ck.check_box(class: "ck") + ck.text} %>
         <% end %>
         <% if ff.object.correct.nil? %>
+          <%= ff.hidden_field :correct, value: false %>
           <% if ff.object.result_correct_count? %>
             <% if Answer.not_correct(ff.object.id) > 0 %>
               <%= ff.check_box :correct, value: false %>

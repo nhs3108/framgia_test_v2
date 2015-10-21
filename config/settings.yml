@@ -18,6 +18,9 @@ defaults: &defaults
       rejected: "rejected"
   pagination:
     per_page: 25
+  default_num_of_most_failed_question: 5
+  min_num_of_most_failed_question: 2
+  max_num_of_most_failed_question: 20
 
 development:
   <<: *defaults

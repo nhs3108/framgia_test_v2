@@ -22,6 +22,9 @@
 en:
   titles:
     header: "Framgia Testing System"
+    most_failed_questions: "Most failed questions"
+    series_name: "Correct"
+    yAxis_title: "Times"
   time:
     formats:
       default: ! "%Y-%m-%d %l:%M %p"

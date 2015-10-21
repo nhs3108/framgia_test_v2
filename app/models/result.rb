@@ -8,6 +8,7 @@ class Result < ActiveRecord::Base
   after_create :create_answers
 
   accepts_nested_attributes_for :answers
+  scope :incorrects, ->{where correct: false}
 
   def create_answers
     answers.create unless question.multiple_choice?
@@ -25,6 +26,11 @@ class Result < ActiveRecord::Base
   end
 
   def check_result
-    self.update correct: true if Answer.not_correct(self.id) <= 0 && Answer.option_correct(self.id) > 0
+    if self.question.question_type == "text"
+      self.update correct: self.answers.first.content.strip ==
+        self.question.options.first.content.strip ? true : nil
+    else
+      self.update correct: Answer.not_correct(self.id) <= 0 && Answer.option_correct(self.id) > 0
+    end
   end
 end
