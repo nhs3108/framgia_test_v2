@@ -14,6 +14,8 @@ require Rails.root.join("lib", "rails_admin", "multi_active_question.rb")
 RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::MultiActiveQuestion)
 require Rails.root.join("lib", "rails_admin", "multi_deactive_question.rb")
 RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::MultiDeactiveQuestion)
+require Rails.root.join("lib", "rails_admin", "dashboard.rb")
+RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::Dashboard)
 
 RailsAdmin.config do |config|
   config.authenticate_with do

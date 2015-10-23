@@ -86,4 +86,25 @@ a:hover {
 .button {
     border-radius: 0px;
     width: 20%;
-  }
+}
+
+.right-inner-addon {
+    position: relative;
+}
+
+.right-inner-addon input {
+    padding-right: 30px;    
+}
+
+.right-inner-addon span {
+    position: absolute;
+    left: 45px;
+    padding: 7px 12px;
+    pointer-events: all;
+    cursor: pointer;
+}
+
+input#quantity-chosing{
+  height: 28px;
+  font-size: 12px;
+}

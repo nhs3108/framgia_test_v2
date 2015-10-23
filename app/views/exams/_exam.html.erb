@@ -18,7 +18,7 @@
   <td><%= exam.subject.duration %></td>
   <td><%= exam.subject.number_of_question %></td>
   <td><%= exam.spent_time_format %></td>
-  <td><%= exam.score_exam.nil? ? "-" : exam.score_exam %></td>
+  <td><%= exam.unchecked? ? "-" : exam.score_exam %></td>
   <td>
     <% if exam.start? %>
       <%= link_to t("exam.buttons.start"), exam, class: "btn btn-primary button" %>
