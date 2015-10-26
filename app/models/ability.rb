@@ -12,6 +12,7 @@ class Ability
         can :export, :all
         can :index, :all
         can :new, :all
+        can :import, Question
         can :edit, :all
         can :show_in_app, :all
         can :show, :all

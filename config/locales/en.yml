@@ -63,3 +63,15 @@ en:
   chatwork_id: "ChatworkID"
   name: "Name"
   email: "Email"
+  admin:
+    actions:
+      import:
+        breadcrumb: "Import"
+        menu: "Import"
+        title: "Import successfully"
+  submit: "Submit"
+  messages:
+    chooseCsvFile: "Choose csv with format as picture below"
+    csv:
+      import_success: "Import successfully"
+      import_failed: "Import failed"

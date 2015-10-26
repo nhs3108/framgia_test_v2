@@ -16,6 +16,8 @@ require Rails.root.join("lib", "rails_admin", "multi_deactive_question.rb")
 RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::MultiDeactiveQuestion)
 require Rails.root.join("lib", "rails_admin", "dashboard.rb")
 RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::Dashboard)
+require Rails.root.join("lib", "rails_admin", "import.rb")
+RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::Import)
 
 RailsAdmin.config do |config|
   config.authenticate_with do
@@ -27,6 +29,9 @@ RailsAdmin.config do |config|
   config.authorize_with :cancan
 
   config.actions do
+    import do
+      only Question
+    end
     dashboard
     index
     create_question do

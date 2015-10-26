@@ -37,4 +37,29 @@ class Question < ActiveRecord::Base
       }
     end.to_json
   end
+
+  def self.import_csv file, user
+    begin
+      CSV.open(file.path, "rt", headers: true).each do |row|
+        content = row["content"]
+        state = row["state"]
+        subject = row["subject"]
+        type = row["type"]
+        active = row["active"]
+        options_data = JSON.parse row["options_data"]
+
+        ActiveRecord::Base.transaction do
+          subject = Subject.create name: subject, chatwork_room_id: 1,
+            number_of_question: 1, duration: 1
+          question = subject.questions.create content: content, state: state.to_i,
+            question_type: type.to_i, active: active, user_id: user.id
+          options_data.each do |option_data|
+            question.options.create option_data.to_hash
+          end
+        end
+      end
+    rescue Exception => e
+      raise e
+    end
+  end
 end
