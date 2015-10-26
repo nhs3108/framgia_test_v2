@@ -41,3 +41,5 @@
       .right-inner-addon
         %span.icon-repeat
         %input.form-control#quantity-chosing{name: "mfq", type: "number", min: Settings.min_num_of_most_failed_question, max: Settings.max_num_of_most_failed_question, value: params["mfq"] ||= Settings.default_num_of_most_failed_question}
+.row
+  #score-line-chart.col-md-11{style: "height: 300px;", "data-score-frequency": @score_frequency, "data-yaxis-title": t("frequency"), "data-title": "Score frequency"}

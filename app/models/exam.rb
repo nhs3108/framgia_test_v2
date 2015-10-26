@@ -17,6 +17,14 @@ class Exam < ActiveRecord::Base
     .order("RAND()")}
 
   scope :select_exam_not_finish, ->user_id{where user_id: user_id, status: [0, 1]}
+  scope :with_score, ->(score){where score: score}
+  scope :descending_by_score, ->{order(score: :desc)}
+
+  def self.score_frequency_json
+    max_score = Exam.descending_by_score.first.score ||= 0
+    min_score = Exam.descending_by_score.last.score ||= 0
+    (min_score..max_score).map{|score| [score, Exam.with_score(score).count]}.to_json
+  end
 
   def create_result subject
     question_ids = Exam.select_random_question(subject).pluck :id

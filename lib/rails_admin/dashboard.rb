@@ -16,6 +16,7 @@ module RailsAdmin
           proc do
             params[:mfq] ||= Settings.default_num_of_most_failed_question
             @num_of_most_failed_question = Question.most_failed_json params[:mfq]
+            @score_frequency = Exam.score_frequency_json
             @history = @auditing_adapter && @auditing_adapter.latest || []
             if @action.statistics?
               @abstract_models = RailsAdmin::Config.visible_models(controller: self).collect(&:abstract_model)

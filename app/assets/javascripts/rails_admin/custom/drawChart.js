@@ -1,11 +1,13 @@
 $(function () {
-  drawChart();
+  drawMostFailedChart();
+  drawScoreFrequencyChart();
   $("a.navbar-brand").click(function(){
     setTimeout(function(){
-      drawChart();
+      drawMostFailedChart();
+      drawScoreFrequencyChart();
     }, 1000);
   });
-  function drawChart(){
+  function drawMostFailedChart(){
     $("span.icon-repeat").click(function(){
       $(this).closest("form").submit();
     });
@@ -48,6 +50,7 @@ $(function () {
         }
       },
       yAxis: {
+        allowDecimals: false,
         min: 0,
         title: {
           text: $("#most-failed-questions-chart").data("yaxis-title")
@@ -74,4 +77,36 @@ $(function () {
     });
   }
 
+  function drawScoreFrequencyChart(){
+    score_data = $("#score-line-chart").data("score-frequency");
+      $("#score-line-chart").highcharts({
+        chart: {
+          type: "line"
+        },
+        title: {
+          text: $("#score-line-chart").data("title")
+        },
+        xAxis: {
+          categories: scores = score_data.map(function(e){ return e[0]})
+        },
+        yAxis: {
+          allowDecimals: false,
+          title: {
+            text: $("#score-line-chart").data("yaxis-title")
+          }
+        },
+        plotOptions: {
+          line: {
+            dataLabels: {
+              enabled: false
+            },
+            enableMouseTracking: true
+          }
+        },
+        series: [{
+          name: "Score frequency",
+          data: score_data.map(function(e){ return e[1]})
+        }]
+    });
+  }
 });
